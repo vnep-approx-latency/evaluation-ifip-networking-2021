@@ -161,22 +161,22 @@ def evaluate_separation_with_latencies( baseline_reduced_pickle,
         filter_exec_params = eval(filter_exec_params)
 
 
-    # algorithm_heatmap_plots.evaluate_latency_and_baseline (
-    #     dc_baseline=baseline_results,
-    #     dc_with_latencies=with_latencies_results,
-    #     algorithm_id=algorithm_id,
-    #     exclude_generation_parameters=exclude_generation_parameters,
-    #     parameter_filter_keys=filter_parameter_keys,
-    #     show_plot=False,
-    #     save_plot=True,
-    #     overwrite_existing_files=overwrite,
-    #     forbidden_scenario_ids=None,
-    #     papermode=papermode,
-    #     maxdepthfilter=10,
-    #     output_path=output_directory,
-    #     output_filetype=output_filetype,
-    #     filter_exec_params=filter_exec_params,
-    # )
+    algorithm_heatmap_plots.evaluate_latency_and_baseline (
+        dc_baseline=baseline_results,
+        dc_with_latencies=with_latencies_results,
+        algorithm_id=algorithm_id,
+        exclude_generation_parameters=exclude_generation_parameters,
+        parameter_filter_keys=filter_parameter_keys,
+        show_plot=False,
+        save_plot=True,
+        overwrite_existing_files=overwrite,
+        forbidden_scenario_ids=None,
+        papermode=papermode,
+        maxdepthfilter=10,
+        output_path=output_directory,
+        output_filetype=output_filetype,
+        filter_exec_params=filter_exec_params,
+    )
 
     runtime_evaluation.evaluate_randround_runtimes_latency_study(
         dc_randround_seplp_dynvmp=with_latencies_results,

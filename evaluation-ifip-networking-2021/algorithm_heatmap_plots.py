@@ -2327,7 +2327,6 @@ class ComparisonPlotter_ECDF_BoxPlot(AbstractPlotter):
             scenario_ids = scenario_ids - self.forbidden_scenario_ids
 
         result = self.compute_relative_profits_arrays(scenario_ids)
-        print(result)
 
         fig, axs = plt.subplots(nrows=2, figsize=FIGSIZE, sharex="col")
         # ax.set_xscale("log", basex=10)
@@ -2743,9 +2742,6 @@ class ComparisonPlotter_ECDF_BoxPlot(AbstractPlotter):
                             patch_artist=True,
                             notch=True,
                             bootstrap=1000)
-
-        print(bplots)
-        print(colors)
 
         for i in range(len(positions)):
             print(("Setting color of boxplot ", i))
