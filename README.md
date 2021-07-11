@@ -24,10 +24,6 @@ The Gurobi Solver must be installed and the .../gurobi64/lib directory added to 
 
 Furthermore, we use Tamaki's algorithm presented in his [paper at ESA 2017](http://drops.dagstuhl.de/opus/volltexte/2017/7880/pdf/LIPIcs-ESA-2017-68.pdf) to compute tree decompositions (efficiently). The corresponding GitHub repository [TCS-Meiji/PACE2017-TrackA](https://github.com/TCS-Meiji/PACE2017-TrackA) must be cloned locally and the environment variable **PACE_TD_ALGORITHM_PATH** must be set to point the location of the repository: PACE_TD_ALGORITHM_PATH="$PATH_TO_PACE/PACE2017-TrackA".
 
-For generating and executing (etc.) experiments, the environment variable ALIB_EXPERIMENT_HOME must be set to a path, such that the subfolders input/ output/ and log/ exist.
-
-**Note**: Our source was only tested on Linux (specifically Ubuntu 14/16).  
-
 # Installation
 
 Install each of the **[alib](https://github.com/vnep-approx/alib)**, **[vnep_approx](https://github.com/vnep-approx/vnep_approx)** and **evaluation-ifip-networking-2021** packages using the setup script we provide. Simply execute from within each of the packages root directories: 
@@ -41,43 +37,15 @@ We generally recommend installing our libraries in a virtual environment.
 
 # Usage
 
-It is recommended to use the given `run_samples.sh` file to execute the experiments with the necessary configuration YAML files.
+For generating and executing (etc.) experiments, the environment variable **ALIB_EXPERIMENT_HOME** should be set to a path, such that the subfolders input/ output/ and log/ exist. If this environment variable is not set, the current working directory is traversed upwards until a directory containing input/, output/, and log/ is found.
 
-```
-python -m evaluation_acm_ccr_2019.cli --help
-Usage: cli.py [OPTIONS] COMMAND [ARGS]...  									
-```
+It is recommended to use the given `run_samples.sh` file to execute the experiments with the necessary configuration YAML files. Set the **LATENCY_FILES_HOME** environment variable to point to a folder that contains the files `latency_scenarios.yml` with the scenario configuration and `latency_execution.yml` with the execution configuration. For examples of these configuration files, see the latency_study/ folder. Then simply execute the `latency_study/run_samles.sh` script.
 
 # Step-by-Step Manual to Reproduce Results
 
-The following worked on Ubuntu 16.04, but depending on the operating system or Linux variant,
-some minor changes might be necessary. In the following, we outline the general idea of our framework
-based on the examples provided in the **[sample](sample)** folder. In fact, the steps discussed below
-can all be found in the respective bash-scripts **run_sample.sh**, which can be executed after having created
-the virtual environment for the project and having installed all required dependencies.
+After having installed each of the **[alib](https://github.com/vnep-approx/alib)**, **[vnep_approx](https://github.com/vnep-approx/vnep_approx)** and **evaluation-ifip-networking-2021** packages, set the **ALIB_EXPERIMENT_HOME** environment variable to a folder containing the three empty folders input/, output/, and log/. Then set the **LATENCY_FILES_HOME** environment variable to point to the `/latency_study/main_evaluation` folder to reproduce the main results from **[1], [2]**. Or set it to point to `/latency_study/second_evaluation` for the second evaluation.
 
-
-## Creating a Virtual Environment and Installing Packages
-
-First, create and activate a novel virtual environment for python2.7. 
-
-```
-virtualenv --python=python2.7 venv  #create new virtual environment in folder venv 
-source venv/bin/activate            #activate the virtual environment
-```
-
-With the virtual environment still active, install the python extensions of [Gurobi](http://www.gurobi.com/) within the
-virtual environment. Note that you need to first download and install a license of Gurobi (which is free for academic use). 
-```
-cd ~/programs/gurobi811/linux64/    #change to the directory of gurobi
-python setup.py install             #install gurobipy within (!) the virtual environment
-```
-
-Then, assuming that all packages, i.e. **alib, vnep_approx**,  and **evaluation-ifip-networking-2021** are downloaded / cloned to the same directory, simply execute the following within each of the packages' root directories:
-
-```
-pip install -e .
-```
+Then simply execute the `latency_study/run_samles.sh` script.
 
 
 # Contact

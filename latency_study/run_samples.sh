@@ -16,6 +16,7 @@ RUN_APPROX=false
 RUN_BASELINE=false
 EVAL=false
 
+# ------------------------ FOR EVALUATION ONLY -----------------------------
 # - - - SPECIFY EXECUTION LATENCY PARAMETER FILTERS - - -
 # will select only scenarios and executions wit the given parameters
 EXCLUDE_EXEC_PARAMS="None"
